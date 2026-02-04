@@ -12,5 +12,6 @@ export default async function handler(req, res) {
       html: "<h2>💖 Asmita clicked YES!</h2><p>This is your Valentine confirmation 💌</p>"
     })
   });
+
   res.status(200).json({ success: true });
 }
