@@ -9,6 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .overlay {
@@ -23,7 +24,7 @@ body {
   border-radius: 22px;
   text-align: center;
   max-width: 360px;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 20px 40px rgba(0,0,0,.2);
 }
 
@@ -39,70 +40,73 @@ h1 {
 }
 
 .buttons {
-  position: relative;
-  height: 60px;
-  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 15px;
 }
 
 button {
-  padding: 12px 26px;
+  flex: 1;
+  padding: 14px;
   border-radius: 999px;
   border: none;
   font-size: 16px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:active {
-  transform: scale(0.95);
 }
 
 #yesBtn {
-  background: #ff4d88;
+  background: linear-gradient(135deg, #ff4d88, #ff85a2);
   color: white;
 }
 
 #noBtn {
   background: #ddd;
-  position: absolute;
-  right: 0;
-}
-
-#response {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #ff2e6d;
 }
 
 .hint {
   font-size: 12px;
   color: #999;
+  margin-top: 10px;
 }
 
-.yes-animate {
-  animation: pop 0.4s ease;
-  box-shadow: 0 0 20px rgba(255, 77, 136, 0.8);
-}
-
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-.hearts::before {
-  content: "💖 💕 💘 💞 💓";
+.love-letter {
   position: fixed;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  animation: floatUp 2s ease forwards;
+  inset: 0;
+  background: rgba(255,255,255,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.letter-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.2);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Heart rain */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 24px;
+  animation: floatUp linear forwards;
+  z-index: 4;
 }
 
 @keyframes floatUp {
   to {
-    bottom: 100%;
+    transform: translateY(-110vh);
     opacity: 0;
   }
 }

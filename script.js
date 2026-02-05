@@ -1,33 +1,34 @@
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const response = document.getElementById("response");
+(function(){
+  emailjs.init("BC4kES9-XwMlyObCK"); // replace
+})();
 
-let noCount = 0;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const letter = document.getElementById("letter");
+const music = document.getElementById("music");
 
 noBtn.addEventListener("click", () => {
-  noCount++;
-
-  if (noCount === 1) {
-    noBtn.innerText = "Are you sure? 😅";
-  } else if (noCount === 2) {
-    noBtn.innerText = "Still no? 😌";
-  } else {
-    noBtn.style.opacity = "0";
-    noBtn.style.pointerEvents = "none";
-  }
-
   const x = Math.random() * 120 - 60;
   const y = Math.random() * 80 - 40;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-yesBtn.addEventListener("click", async () => {
-  yesBtn.classList.add("yes-animate");
-  response.innerHTML = "She said YES 💘😭";
+yesBtn.addEventListener("click", () => {
+  music.play().catch(() => {});
+  letter.style.display = "flex";
 
-  try {
-    await fetch("/api/notify", { method: "POST" });
-  } catch (e) {
-    console.log("Email failed");
+  // Heart rain
+  for (let i = 0; i < 30; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 2 + Math.random() * 2 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
   }
+
+  emailjs.send("service_u6o4u1v","template_lyglmmq",{
+    message: "Asmita clicked YES 💘"
+  });
 });

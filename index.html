@@ -5,6 +5,7 @@
   <title>Be My Valentine 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 <body>
   <div class="overlay"></div>
@@ -18,11 +19,21 @@
       <button id="noBtn">NO 🙈</button>
     </div>
 
-    <p id="response"></p>
     <p class="hint">(Tap the buttons 😉)</p>
   </div>
 
-  <div class="hearts"></div>
+  <!-- Love Letter -->
+  <div class="love-letter" id="letter">
+    <div class="letter-card">
+      <h2>💌 For You, Asmita</h2>
+      <p>
+        I knew you’d say yes.<br><br>
+        Thank you for choosing me — today and always ❤️
+      </p>
+    </div>
+  </div>
+
+  <audio id="music" src="music.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
